@@ -1,1 +1,19 @@
+name: Create and publish a Docker image
 
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: PerfAI Action
+        uses: P10-ai/Perf-Actions@v1.3
