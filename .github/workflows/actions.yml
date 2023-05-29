@@ -20,5 +20,5 @@ jobs:
         with:
           openapi_spec_url: 'https://petstore.swagger.io/v2/swagger.yaml'
           description: Open API Spec File
-          required: true
+          required: false
           default: 'https://petstore.swagger.io/v2/swagger.yaml'
