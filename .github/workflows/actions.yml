@@ -40,7 +40,13 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
   
-  
+      - name: List Docker images
+        run: docker image ls   
+           |
+         IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+           
+      - name: Pull Docker image
+        run: docker pull ghcr.io/p10-ai/${{ env.IMAGE_NAME }}     
   
   
   
