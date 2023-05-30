@@ -1,49 +1,60 @@
-name: Test Another Repo
+name: Create and publish a Docker image
 
 on:
   push:
-    branches: ['main']
-    
+    branches:
+      - master
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}    
+#  IMAGE_NAME: mohdrashid01/hello-world-docker-action
+  IMAGE_NAME: p10-ai/test 
+  
+  # name: Test Another Repo
 
-jobs:
-  build-and-push-image:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+# on:
+#   push:
+#     branches: ['main']
+    
+# env:
+#   REGISTRY: ghcr.io
+#   IMAGE_NAME: ${{ github.repository }}    
 
-    steps:   
-      - name: Checkout repository
-        uses: actions/checkout@v3
+# jobs:
+#   build-and-push-image:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: read
+#       packages: write
+
+#     steps:   
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
         
-      - name: Log in to the Container registry
-        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: PerfAI Action  
-        uses: P10-ai/Perf-Actions@v1.3
-        with:
-          repository: p10-ai/perf-engine
-          
-      - name: List Docker images
-        run: docker image ls   
-           |
-         IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-          
-        
-#       - id: step2
-#         run: echo ${{ steps.string.outputs.lowercase }} 
-#        uses: ghcr.io/p10-ai/perf-engine   
-
-
+#       - name: Log in to the Container registry
+#         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
 #         with:
-#           openapi_spec_url: 'https://petstore.swagger.io/v2/swagger.yaml'
-#           description: Open API Spec File
-#           required: false
-#           default: 'https://petstore.swagger.io/v2/swagger.yaml'
+#           registry: ${{ env.REGISTRY }}
+#           username: ${{ github.actor }}
+#           password: ${{ secrets.GITHUB_TOKEN }}
+          
+#       - name: PerfAI Action  
+#         uses: P10-ai/Perf-Actions@v1.3
+#         with:
+#           repository: p10-ai/perf-engine
+          
+#       - name: List Docker images
+#         run: docker image ls   
+#            |
+#          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          
+        
+# #       - id: step2
+# #         run: echo ${{ steps.string.outputs.lowercase }} 
+# #        uses: ghcr.io/p10-ai/perf-engine   
+
+
+# #         with:
+# #           openapi_spec_url: 'https://petstore.swagger.io/v2/swagger.yaml'
+# #           description: Open API Spec File
+# #           required: false
+# #           default: 'https://petstore.swagger.io/v2/swagger.yaml'
