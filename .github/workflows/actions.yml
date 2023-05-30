@@ -15,18 +15,15 @@ jobs:
       contents: read
       packages: write
 
-    steps:
-      - name: set lower case owner name
-        run: |
-          echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
-        env:
-          OWNER: '${{ github.repository_owner }}'
-          
+    steps:   
       - name: Checkout repository
         uses: actions/checkout@v3
         
       - name: PerfAI Action
         uses: P10-ai/Perf-Actions@v1.3
+        
+      - id: step2
+        run: echo ${{ steps.string.outputs.lowercase }} 
 #        uses: ghcr.io/p10-ai/perf-engine   
 
 
