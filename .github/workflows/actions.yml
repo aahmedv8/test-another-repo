@@ -31,6 +31,11 @@ jobs:
         with:
           repository: p10-ai/perf-engine
           
+      - name: List Docker images
+        run: docker image ls   
+           |
+         IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          
         
 #       - id: step2
 #         run: echo ${{ steps.string.outputs.lowercase }} 
