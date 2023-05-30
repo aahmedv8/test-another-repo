@@ -18,12 +18,15 @@ jobs:
     steps:   
       - name: Checkout repository
         uses: actions/checkout@v3
-        
-      - name: PerfAI Action
-        uses: P10-ai/Perf-Actions@v1.3
-        with:
-          repository: p10-ai/perf-engine
-
+      
+      - name: Use Docker image
+        run: docker run docker.pkg.github.com/p10-ai/perf-Engine/perf-engine-image:latest
+  
+#       - name: PerfAI Action
+#         uses: P10-ai/Perf-Actions@v1.3
+#         with:
+#           repository: p10-ai/perf-engine
+          
         
 #       - id: step2
 #         run: echo ${{ steps.string.outputs.lowercase }} 
