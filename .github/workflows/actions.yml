@@ -18,14 +18,18 @@ jobs:
     steps:   
       - name: Checkout repository
         uses: actions/checkout@v3
-      
-      - name: Use Docker image
-        run: docker run docker.pkg.github.com/p10-ai/perf-engine/perf-engine-image:latest
-  
-#       - name: PerfAI Action
-#         uses: P10-ai/Perf-Actions@v1.3
-#         with:
-#           repository: p10-ai/perf-engine
+        
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: PerfAI Action  
+        uses: P10-ai/Perf-Actions@v1.3
+        with:
+          repository: p10-ai/perf-engine
           
         
 #       - id: step2
