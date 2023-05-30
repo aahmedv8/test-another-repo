@@ -6,7 +6,6 @@ on:
       - main
 env:
   REGISTRY: ghcr.io
-#  IMAGE_NAME: mohdrashid01/hello-world-docker-action
   IMAGE_NAME: p10-ai/test 
   
 jobs:
