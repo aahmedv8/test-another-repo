@@ -21,9 +21,12 @@ jobs:
         
       - name: PerfAI Action
         uses: P10-ai/Perf-Actions@v1.3
+        with:
+          repository: p10-ai/perf-engine
+
         
-      - id: step2
-        run: echo ${{ steps.string.outputs.lowercase }} 
+#       - id: step2
+#         run: echo ${{ steps.string.outputs.lowercase }} 
 #        uses: ghcr.io/p10-ai/perf-engine   
 
 
