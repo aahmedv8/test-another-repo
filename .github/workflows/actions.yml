@@ -9,6 +9,13 @@ env:
 #  IMAGE_NAME: mohdrashid01/hello-world-docker-action
   IMAGE_NAME: p10-ai/test 
   
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+  
   # name: Test Another Repo
 
 # on:
