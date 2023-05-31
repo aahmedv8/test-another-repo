@@ -6,7 +6,7 @@ on:
       - main
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: p10-ai/test 
+  IMAGE_NAME: P10-ai/Perf-Actions 
   
 jobs:
   build-and-push-image:
