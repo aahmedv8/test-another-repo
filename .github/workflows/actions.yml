@@ -24,3 +24,4 @@ jobs:
         uses: p10-ai/perf-actions@v1.3
         with:
           openapi_spec_url: "https://petstore.swagger.io/v2/swagger.yaml" 
+
