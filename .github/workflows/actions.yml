@@ -6,7 +6,8 @@ on:
       - main
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: P10-ai/Perf-Actions 
+  IMAGE_NAME: P10-ai/Perf-Engine
+  TAG: v1.1
   
 jobs:
   build-and-push-image:
@@ -19,34 +20,53 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Log in to the Container registry
-        uses:  docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9      
+      - name: PerfAI Action
+        uses: P10-ai/Perf-Actions@v1.3
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.MY_TOKEN }}
+          openapi_spec_url: "https://petstore.swagger.io/v2/swagger.yaml" 
+        
+#       - name: Log in to the Container registry
+#         uses:  docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9      
+#         with:
+#           registry: ${{ env.REGISTRY }}
+#           username: ${{ github.actor }}
+#           password: ${{ secrets.MY_TOKEN }}
   
-      - name: Docker Extract metadata action (tags, labels)
-        id: meta
-        uses: docker/metadata-action@v4.4.0
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}  
+#       - name: Docker Extract metadata action (tags, labels)
+#         id: meta
+#         uses: docker/metadata-action@v4.4.0
+#         with:
+#           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          
+#       - name: Pull Docker image
+#         run: |
+#           echo  ${{env.REGISTRY}}/${{env.IMAGE_NAME}}:${{env.TAG}}
+#           echo  ${{env.REGISTRY}}/${{env.IMAGE_NAME}}:${{env.TAG}}:${{github.actor}}:${{secrets.MY_TOKEN}}
+#           docker pull ${{env.REGISTRY}}/${{env.IMAGE_NAME}}:${{env.TAG}}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4.0.0
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+
+#       - name: Use GHCR.IO image
+#         uses: ghcr.io/P10-ai/perfai-action@v1.1
+#         with:
+#           openapi_spec_url: "https://petstore.swagger.io/v2/swagger.yaml"  
+
+
+
+#       - name: Build and push Docker image
+#         uses: docker/build-push-action@v4.0.0
+#         with:
+#           context: .
+#           push: true
+#           tags: ${{ steps.meta.outputs.tags }}
+#           labels: ${{ steps.meta.outputs.labels }}
   
-      - name: List Docker images
-        run: docker image ls   
-           |
-         IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+#       - name: List Docker images
+#         run: docker image ls   
+#            |
+#          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
            
-      - name: Pull Docker image
-        run: docker pull ghcr.io/p10-ai/${{ env.IMAGE_NAME }}     
+#       - name: Pull Docker image
+#         run: docker pull ghcr.io/p10-ai/${{ env.IMAGE_NAME }}     
   
   
   
