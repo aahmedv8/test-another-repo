@@ -8,23 +8,7 @@ on:
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
-    steps:
-      - name: List Files
-        run: |
-          pwd
-          ls -a
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKSPACE
-          echo "${{ github.token }}"
-      - name: echo a string
-        run: echo "run a script"
-      
-      - name: multiline script
-        run: |
-          node -v
-          npm -v
-        
+    steps:  
       - name: Checkout repository
         uses: actions/checkout@v3
 
