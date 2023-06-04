@@ -9,6 +9,9 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     steps:
+      - name: Perf Action
+        uses: P10-ai/Perf-Actions@v1.9
+      
       - name: echo a string
         run: echo "run a script"
       
