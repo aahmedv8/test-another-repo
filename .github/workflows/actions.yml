@@ -13,6 +13,6 @@ jobs:
         uses: actions/checkout@v3
 
       - name: PerfAI Action
-        uses: P10-ai/Perf-Actions@v2.0
+        uses: P10-ai/Perf-Actions@v2.1
         with:
           openapi_spec_url: "https://petstore.swagger.io/v2/swagger.yaml" 
